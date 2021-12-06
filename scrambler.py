@@ -39,9 +39,13 @@ if __name__ == '__main__':
     parser.add_argument('filename', help='enter the file with the text')
     parser.add_argument('--min', type=int, help='fewest words you want in a line')
     parser.add_argument('--max', type=int, help='most words you want in a line')
+    parser.add_argument('--stop', action='store_const', const='stop')
     args = parser.parse_args()
     with open(args.filename) as f:
         text = f.read()
-    formatted = format_text(text)
+    if args.stop:
+        formatted = format_text(text)
+    else:
+        formatted = format_text(text, keep_stopwords=True)
     word_list = formatted.split(' ')
     print(main(word_list, min_line_length=args.min, max_line_length=args.max))

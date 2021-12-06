@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hello, Flask</title>
+    </head>
+    <body>
+        <form method="POST" name="test" id="main">
+            <textarea name="text" form="main"></textarea>
+            <input type="submit" onclick="test"/>
+        </form>
+        {% for para in text %}
+            <p>{{para}}</p>
+        {% endfor %}
+    </body>
+</html>
